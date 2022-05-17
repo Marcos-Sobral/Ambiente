@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="projeto.tabela2.js"></script>
+    <title>Projetos - CRIAR</title>
+</head>
+<body>
+    <livewire:header/>
+    <main>
+        <div class="box">
+            <h1 class="title">Novo Projeto</h1>
+        </div>
+                <div id="divConteudo">
+                    <table id="tabela">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Ingrediente</th>
+                                <th>Quantidade</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th><input type="text" id="txtColuna1"/></th>
+                                <th><input type="text" id="txtColuna1"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            <div id="divConteudo">
+                <table id="tabela_selecionados">
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+    </main>
+    <script>
+        var myArray = [
+            {'ID':'1', 'Ingrediente':'Arroz', 'Quantidade':'100'},
+            {'ID':'2', 'Ingrediente':'Feijão', 'Quantidade':'200'},
+            {'ID':'3', 'Ingrediente':'Queijo', 'Quantidade':'300'},
+            {'ID':'4', 'Ingrediente':'Banana', 'Quantidade':'400'},
+            {'ID':'5', 'Ingrediente':'Manga', 'Quantidade':'500'},
+            {'ID':'6', 'Ingrediente':'Limão', 'Quantidade':'600'},
+        ]
+
+        var myArray2 = []
+
+        buildTable(myArray)
+        buildTable2(myArray2)
+
+        function buildTable(data){
+            var table = document.getElementById('tabela')
+
+            for (var i = 0; i < data.length; i++){
+                var row =   `<tr>
+                                <td><input class="check" type="checkbox" value="${data[i].ID}"/></td>
+                                <td>${data[i].Ingrediente}</td>
+                                <td>${data[i].Quantidade}</td>
+                            </tr>`
+                table.innerHTML += row
+            }
+        }
+
+        function buildTable2(data){
+            var table = document.getElementById('tabela_selecionados')
+
+            for (var i = 0; i < data.length; i++){
+                var row =   `<tr>
+                                <td>${data[i].Ingrediente}</td>
+                                <td>${data[i].Quantidade}</td>
+                            </tr>`
+                table.innerHTML += row
+            }
+        }
+
+    </script> 
+</body>
+</html>
